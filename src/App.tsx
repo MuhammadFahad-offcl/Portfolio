@@ -423,7 +423,7 @@ function App() {
 
             <div className="about-grid">
               <div className="profile-card glass-card" data-reveal="left">
-                <div className="profile-orb">MF</div>
+                <img src="/fahad.webp" alt="Muhammad Fahad" className="profile-photo" />
                 <div className="profile-footer glass-card">
                   <span>Founder</span>
                   <strong>VoxAi</strong>

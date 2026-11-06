@@ -510,6 +510,20 @@ textarea {
   font-weight: 700;
 }
 
+.profile-photo {
+  position: absolute;
+  left: 50%;
+  bottom: 6.5rem;
+  height: calc(100% - 9rem);
+  transform: translateX(-50%);
+  animation: photo-float 5s ease-in-out infinite;
+}
+
+@keyframes photo-float {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-12px); }
+}
+
 .profile-footer {
   position: absolute;
   left: 1.5rem;
