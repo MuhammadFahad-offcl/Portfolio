@@ -34,7 +34,10 @@ export const profile = {
   location: "Lahore, Pakistan",
   company: "VoxAi",
   linkedin: "https://linkedin.com/in/muhammad-fahad-275aa5390",
-  github: "https://github.com",
+  github: "https://github.com/MuhammadFahad-offcl",
+  // Contact form messages are delivered to this address (via formsubmit.co).
+  // The very first message sends you an "Activate Form" email — click it once.
+  formEmail: "muhammadfahad.offcl@gmail.com",
 };
 
 /* ---------- Navbar ---------- */

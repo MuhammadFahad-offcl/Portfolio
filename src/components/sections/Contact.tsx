@@ -54,11 +54,14 @@ export function Contact() {
   const [errors, setErrors] = useState<Errors>({});
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState("");
+  const [honeypot, setHoneypot] = useState(""); // hidden field that only spam bots fill in
 
   const update = (field: keyof FormState, value: string) => setForm({ ...form, [field]: value });
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (sending) return;
     const result = schema.safeParse(form);
     if (!result.success) {
       const next: Errors = {};
@@ -69,15 +72,35 @@ export function Contact() {
       return;
     }
     setErrors({});
+    setSendError("");
     setSending(true);
-    // NOTE: same as the Lovable site — this only shows a success message.
-    // To actually receive messages, connect a form service (e.g. Formspree) here.
-    setTimeout(() => {
-      setSending(false);
+
+    try {
+      // Sends the message to your inbox through formsubmit.co (free, no account needed).
+      const res = await fetch(`https://formsubmit.co/ajax/${profile.formEmail}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: result.data.name,
+          email: result.data.email,
+          message: result.data.message,
+          _subject: `Portfolio: ${result.data.subject}`,
+          _replyto: result.data.email,
+          _template: "table",
+          _honey: honeypot,
+        }),
+      });
+      const data = (await res.json().catch(() => ({}))) as { success?: string | boolean };
+      if (!res.ok || String(data.success) !== "true") throw new Error("send failed");
+
       setSent(true);
       setForm(emptyForm);
       setTimeout(() => setSent(false), 4000);
-    }, 1000);
+    } catch {
+      setSendError(`Couldn't send right now. Please email me at ${profile.email}.`);
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -155,6 +178,16 @@ export function Contact() {
             transition={{ duration: 0.7 }}
             className="glass rounded-3xl p-8 shadow-soft lg:col-span-3"
           >
+            <input
+              type="text"
+              name="_honey"
+              value={honeypot}
+              onChange={(e) => setHoneypot(e.target.value)}
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              className="hidden"
+            />
             <div className="grid gap-5 sm:grid-cols-2">
               {(
                 [
@@ -231,6 +264,11 @@ export function Contact() {
                 </>
               )}
             </motion.button>
+            {sendError && (
+              <p role="alert" className="mt-3 text-center text-xs text-destructive">
+                {sendError}
+              </p>
+            )}
           </motion.form>
         </div>
       </div>

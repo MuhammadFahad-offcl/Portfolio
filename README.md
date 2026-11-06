@@ -53,8 +53,13 @@ src/
       Hero.tsx  About.tsx  Skills.tsx  Projects.tsx  Credentials.tsx  Contact.tsx
 ```
 
-## Note on the contact form
+## Contact form
 
-The form validates input and shows "Message sent", but it does not deliver
-messages anywhere yet. To receive messages, connect a form service such as
-Formspree in `src/components/sections/Contact.tsx` (see the `NOTE` comment).
+Messages from the form are emailed to the address in `formEmail`
+(`src/data/portfolio.ts`) through [FormSubmit](https://formsubmit.co), a free
+service that needs no account.
+
+**One-time setup:** the first message ever sent triggers an "Activate Form"
+email from FormSubmit to that inbox. Click the link in it once; every message
+after that arrives normally. To receive messages somewhere else, change
+`formEmail`.
