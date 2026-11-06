@@ -47,12 +47,12 @@ export function Navbar() {
             <span className="text-gradient">{profile.logo}</span>
           </a>
 
-          <nav className="hidden items-center gap-1 md:flex">
+          <nav className="hidden items-center gap-1 lg:flex">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="relative rounded-full px-4 py-2 text-sm text-foreground/70 transition-colors hover:text-primary"
+                className="relative whitespace-nowrap rounded-full px-4 py-2 text-sm text-foreground/70 transition-colors hover:text-primary"
               >
                 {active === link.href.slice(1) && (
                   <motion.span
@@ -70,24 +70,24 @@ export function Navbar() {
             <button
               onClick={toggle}
               aria-label="Toggle dark mode"
-              className="hidden size-10 items-center justify-center rounded-full border border-border bg-transparent text-foreground/80 transition-all duration-300 hover:border-primary/50 hover:text-primary md:inline-flex"
+              className="hidden size-10 items-center justify-center rounded-full border border-border bg-transparent text-foreground/80 transition-all duration-300 hover:border-primary/50 hover:text-primary lg:inline-flex"
             >
               <ThemeIcon size={16} />
             </button>
             <a
               href="#contact"
-              className="magnetic-btn hidden rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground md:inline-block"
+              className="magnetic-btn hidden whitespace-nowrap rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground lg:inline-block"
             >
               Let's Talk
             </a>
             <button
               onClick={toggle}
               aria-label="Toggle dark mode"
-              className="inline-flex size-9 items-center justify-center rounded-full text-foreground/80 md:hidden"
+              className="inline-flex size-9 items-center justify-center rounded-full text-foreground/80 lg:hidden"
             >
               <ThemeIcon size={18} />
             </button>
-            <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden" aria-label="Menu">
+            <button onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden" aria-label="Menu" aria-expanded={menuOpen}>
               {menuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
@@ -100,7 +100,7 @@ export function Navbar() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="glass mx-6 mt-2 rounded-2xl p-4 md:hidden"
+            className="glass mx-6 mt-2 rounded-2xl p-4 lg:hidden"
           >
             <div className="flex flex-col">
               {navLinks.map((link) => (

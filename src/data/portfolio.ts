@@ -34,7 +34,7 @@ export const profile = {
   whatsappLink:
     "https://wa.me/923044782376?text=Hi%20Fahad%2C%20I%20visited%20your%20portfolio%20and%20would%20like%20to%20connect!",
   location: "Lahore, Pakistan",
-  company: "VoxAi",
+  company: "VoxFlow",
   linkedin: "https://linkedin.com/in/muhammad-fahad-275aa5390",
   github: "https://github.com/MuhammadFahad-offcl",
   // Contact form messages are delivered to this address (via formsubmit.co).
@@ -47,6 +47,7 @@ export const navLinks = [
   { href: "#home", label: "Home" },
   { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
+  { href: "#client-work", label: "Client Work" },
   { href: "#projects", label: "Projects" },
   { href: "#certifications", label: "Credentials" },
   { href: "#contact", label: "Contact" },
@@ -66,12 +67,12 @@ export const hero = {
 
 /* ---------- About ---------- */
 export const about = {
-  photoCaption: { label: "Founder", value: "VoxAi" },
+  photoCaption: { label: "Founder", value: profile.company },
   mission:
     "My mission: become a top AI Engineer and ship products that genuinely move the needle for businesses and people. Strong foundations in C++, OOP, DSA, and database design.",
   facts: [
     { icon: MapPin, label: "Location", value: "Lahore, Pakistan" },
-    { icon: Building2, label: "Company", value: "VoxAi" },
+    { icon: Building2, label: "Company", value: profile.company },
     { icon: GraduationCap, label: "Education", value: "BSCS @ UMT • 2024–2028" },
     { icon: Award, label: "Role", value: "Founder & Lead Automation Architect" },
   ] satisfies { icon: LucideIcon; label: string; value: string }[],
@@ -96,6 +97,45 @@ export const skillGroups: { title: string; chips: string[] }[] = [
   {
     title: "Foundations",
     chips: ["OOP", "DSA", "Database Design", "Problem Solving", "System Design"],
+  },
+];
+
+/* ---------- Client work (real projects running for clients) ---------- */
+export const clientWork: {
+  title: string;
+  client: string;
+  status: string;
+  summary: string;
+  highlights: string[];
+  stats: { value: string; label: string }[];
+  stack: string[];
+  video?: { src: string; poster: string; caption: string };
+}[] = [
+  {
+    title: "WhatsApp Appointment Agent",
+    client: "Private clinic · Lahore", // add the clinic's name here if they're happy to be named
+    status: "Live since Oct 2026",
+    summary:
+      "An AI receptionist on WhatsApp that replies to patients the moment they message, answers their questions and books their appointment — around the clock, in Roman Urdu or English. The clinic's team only steps in when a patient needs a human.",
+    highlights: [
+      "Instantly answers patients arriving from the clinic's Facebook & Instagram ads",
+      "Books appointments through a natural chat with tap-to-select options",
+      "Checks each patient against the clinic's booking requirements before confirming",
+      "Sends a confirmation with a token number, plus a reminder before the visit",
+      "Logs every booking to Google Sheets in real time and sends the team a daily report",
+      "Hosted, monitored and maintained by me under an ongoing support plan",
+    ],
+    stats: [
+      { value: "24/7", label: "Always on" },
+      { value: "~10s", label: "To book" },
+      { value: "Live", label: "Real patients" },
+    ],
+    stack: ["n8n", "WhatsApp Cloud API", "OpenAI", "Supabase (RAG)", "Google Sheets", "Webhooks"],
+    video: {
+      src: "/media/whatsapp-agent-demo.mp4",
+      poster: "/media/whatsapp-agent-poster.webp",
+      caption: "Booking flow demo · sample patient data",
+    },
   },
 ];
 
@@ -146,13 +186,23 @@ export const credentials: {
   org: string;
   year: string;
   desc: string;
+  // Optional proof: an image in /public shown on the card and enlarged on click.
+  certificate?: { image: string; id?: string };
 }[] = [
+  {
+    icon: Award,
+    title: "Agentic AI & Automation Expert",
+    org: "Tech7 Academy",
+    year: "Issued Jun 2026",
+    desc: "Certified in designing and deploying autonomous AI agents — including AI calling systems, workflow automations and intelligent business solutions — through an n8n curriculum-approved program.",
+    certificate: { image: "/media/tech7-certificate.webp", id: "33613" },
+  },
   {
     icon: Building2,
     title: "Founder & Lead Automation Architect",
-    org: "VoxAi",
+    org: profile.company,
     year: "May 2026 – Present",
-    desc: "Founded VoxAi — a technology agency focused on AI automation, agentic workflows, and intelligent digital systems. Architected scalable backend systems with Supabase and PostgreSQL.",
+    desc: "Founded VoxFlow — a technology agency focused on AI automation, agentic workflows, and intelligent digital systems. Architected scalable backend systems with Supabase and PostgreSQL.",
   },
   {
     icon: Award,
@@ -187,6 +237,7 @@ export const footer = {
     { label: "Home", href: "#home" },
     { label: "About", href: "#about" },
     { label: "Skills", href: "#skills" },
+    { label: "Client Work", href: "#client-work" },
     { label: "Projects", href: "#projects" },
     { label: "Certs", href: "#certifications" },
     { label: "Contact", href: "#contact" },

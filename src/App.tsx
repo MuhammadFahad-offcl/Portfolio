@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Skills } from "@/components/sections/Skills";
+import { ClientWork } from "@/components/sections/ClientWork";
 import { Projects } from "@/components/sections/Projects";
 import { Credentials } from "@/components/sections/Credentials";
 import { Contact } from "@/components/sections/Contact";
@@ -21,6 +22,7 @@ export default function App() {
       <Hero />
       <About />
       <Skills />
+      <ClientWork />
       <Projects />
       <Credentials />
       <Contact />

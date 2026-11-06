@@ -65,7 +65,7 @@ export function About() {
           >
             <p className="text-lg leading-relaxed text-foreground/80">
               I'm a <span className="font-semibold text-foreground">BSCS student at UMT</span> and the founder of{" "}
-              <span className="text-gradient font-semibold">VoxAi</span> — a Pakistan-based technology agency focused
+              <span className="text-gradient font-semibold">{profile.company}</span> — a Pakistan-based technology agency focused
               on AI automation, agentic workflows, and intelligent digital systems. I specialize in{" "}
               <span className="font-medium text-foreground">AI Agents</span>,{" "}
               <span className="font-medium text-foreground">n8n automation</span>, and modern web development that

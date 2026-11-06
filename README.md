@@ -2,7 +2,7 @@
 
 # Muhammad Fahad
 
-**AI Automation & Agentic AI Specialist** · Founder of VoxAi · BSCS @ UMT
+**AI Automation & Agentic AI Specialist** · Founder of VoxFlow · BSCS @ UMT
 
 Personal portfolio showcasing my work in AI agents, n8n automation workflows, and modern web development.
 
@@ -27,7 +27,7 @@ Personal portfolio showcasing my work in AI agents, n8n automation workflows, an
 ## About
 
 I'm a Computer Science student at the University of Management and Technology (UMT), Lahore, and the
-founder of **VoxAi** — an agency building AI automation, agentic workflows, and intelligent digital
+founder of **VoxFlow** — an agency building AI automation, agentic workflows, and intelligent digital
 systems for businesses. This site is where I present my projects, skills, and credentials, and where
 clients can reach me directly.
 
@@ -37,6 +37,8 @@ clients can reach me directly.
 - **Polished motion** — staggered scroll reveals, blur-in hero, mouse-reactive background, custom cursor and a scroll progress bar, built with Framer Motion.
 - **Fully responsive** — designed for phones, tablets and large screens, with a dedicated mobile menu.
 - **Working contact form** — schema-validated with Zod, delivered straight to my inbox, with a honeypot to filter spam bots.
+- **Real client work** — a live WhatsApp appointment agent running in production, shown with a video demo that plays only while on screen.
+- **Verifiable credentials** — certificates viewable full-size in an accessible lightbox.
 - **One-click resume download** — available from the hero and the contact section.
 - **Content-driven architecture** — every piece of text, link, skill, project and credential lives in a single typed data file, so content updates never touch layout code.
 - **Lightweight & accessible** — no heavy 3D libraries, lazy-loaded imagery, semantic HTML, and reduced-motion support.
@@ -61,8 +63,9 @@ clients can reach me directly.
 | **Home** | Introduction, availability status, and quick links to hire me, view projects, or download my CV |
 | **About** | Background, mission, and key facts — location, company, education, role |
 | **Skills** | Languages, AI / agentic AI, automation, web, backend, tools, platforms, and CS foundations |
+| **Client Work** | Production systems delivered for real clients — featuring a live WhatsApp appointment agent for a clinic, with a video demo |
 | **Projects** | WhatsApp AI agent, social media automation, n8n workflows, agentic AI systems, and more |
-| **Credentials** | Professional milestones and education |
+| **Credentials** | Certifications with verifiable certificates, professional milestones, and education |
 | **Contact** | Email, WhatsApp, resume, social links, and a contact form |
 
 ## Tech Stack
@@ -83,6 +86,7 @@ clients can reach me directly.
 ```text
 ├── docs/                       README screenshots
 ├── public/
+│   ├── media/                  demo video, poster and certificate images
 │   ├── fahad.webp              profile photo
 │   └── Muhammad_Fahad_Resume.pdf
 └── src/
@@ -92,8 +96,8 @@ clients can reach me directly.
     ├── hooks/useTheme.ts       theme switching and persistence
     └── components/
         ├── Navbar, Footer, Loader, ScrollProgress, CustomCursor
-        ├── BlurFade, SectionLabel, BrandIcons
-        └── sections/           Hero, About, Skills, Projects, Credentials, Contact
+        ├── BlurFade, SectionLabel, BrandIcons, ImageLightbox
+        └── sections/           Hero, About, Skills, ClientWork, Projects, Credentials, Contact
 ```
 
 <details>
@@ -107,6 +111,8 @@ clients can reach me directly.
 | Profile photo | Replace `public/fahad.webp` |
 | Resume | Replace `public/Muhammad_Fahad_Resume.pdf` (same file name) |
 | Colors for light / dark mode | `:root` and `.dark` at the top of `src/index.css` |
+| Client projects and demo videos | `clientWork` in `src/data/portfolio.ts` (videos go in `public/media/`) |
+| Certificates | Add `certificate: { image, id }` to a credential (images go in `public/media/`) |
 | Section order | `src/App.tsx` |
 | Where contact messages are delivered | `formEmail` in `src/data/portfolio.ts` |
 
