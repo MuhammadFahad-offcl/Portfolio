@@ -27,6 +27,7 @@ The finished site is written to the `dist/` folder.
 | --- | --- |
 | Any text, links, email, WhatsApp, skills, projects, credentials | `src/data/portfolio.ts` |
 | Your photo | Replace `public/fahad.webp` (keep the same name, or change `photo` in `src/data/portfolio.ts`) |
+| Your resume (Download CV buttons) | Replace `public/Muhammad_Fahad_Resume.pdf` (keep the same name) |
 | Colors (light and dark mode) | Top of `src/index.css` (`:root` = light, `.dark` = dark) |
 | Order of sections on the page | `src/App.tsx` |
 | Layout of one section | `src/components/sections/<Section>.tsx` |
@@ -41,6 +42,7 @@ import the icon by name at the top of that file and use it as `icon: IconName`.
 ```text
 public/
   fahad.webp              your photo
+  Muhammad_Fahad_Resume.pdf   your resume
 src/
   data/portfolio.ts       ALL site content
   index.css               colors, fonts, custom effects

@@ -1,6 +1,6 @@
 import { useState, type FormEvent, type ReactNode } from "react";
 import { motion } from "framer-motion";
-import { Building2, Check, Mail, MapPin, MessageCircle, Send } from "lucide-react";
+import { Building2, Check, FileText, Mail, MapPin, MessageCircle, Send } from "lucide-react";
 import { z } from "zod";
 import { profile } from "@/data/portfolio";
 import { SectionLabel } from "@/components/SectionLabel";
@@ -23,7 +23,19 @@ const inputClass =
 const labelClass = "mb-2 block text-xs font-medium uppercase tracking-wider text-muted-foreground";
 const smallLabelClass = "text-[10px] font-medium uppercase tracking-wider text-muted-foreground";
 
-function InfoCard({ icon, label, value, href }: { icon: ReactNode; label: string; value: string; href?: string }) {
+function InfoCard({
+  icon,
+  label,
+  value,
+  href,
+  download,
+}: {
+  icon: ReactNode;
+  label: string;
+  value: string;
+  href?: string;
+  download?: boolean;
+}) {
   const inner = (
     <>
       <div className="flex size-11 items-center justify-center rounded-xl bg-primary/10 text-primary">{icon}</div>
@@ -40,6 +52,7 @@ function InfoCard({ icon, label, value, href }: { icon: ReactNode; label: string
   return (
     <a
       href={href}
+      download={download || undefined}
       target={external ? "_blank" : undefined}
       rel={external ? "noreferrer" : undefined}
       className="glass group flex items-start gap-4 rounded-2xl p-5 shadow-soft transition-transform hover:-translate-y-1 hover:shadow-glow"
@@ -144,6 +157,13 @@ export function Contact() {
             />
             <InfoCard icon={<MapPin size={18} />} label="Based in" value={profile.location} />
             <InfoCard icon={<Building2 size={18} />} label="Company" value={profile.company} />
+            <InfoCard
+              icon={<FileText size={18} />}
+              label="Resume"
+              value="Download PDF"
+              href={profile.resume}
+              download
+            />
             <div className="glass rounded-2xl p-5 shadow-soft">
               <div className={smallLabelClass}>Find me online</div>
               <div className="mt-3 flex gap-2">

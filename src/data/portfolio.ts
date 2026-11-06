@@ -27,6 +27,8 @@ export const profile = {
   logo: "MF.", // top-left of the navbar
   loaderText: "MUHAMMAD FAHAD", // short intro screen
   photo: "/fahad.webp", // file inside the /public folder
+  // To update your resume, replace this file in /public (keep the same name).
+  resume: "/Muhammad_Fahad_Resume.pdf",
   email: "muhammadfahad.offcl@gmail.com",
   whatsappDisplay: "+92 304 4782376",
   whatsappLink:
@@ -59,6 +61,7 @@ export const hero = {
     "Helping businesses scale by integrating intelligent custom AI agents, production-grade n8n automation workflows, and robust web applications.",
   primaryButton: { label: "Hire Me", href: "#contact" },
   secondaryButton: { label: "View Projects", href: "#projects" },
+  resumeButton: { label: "Download CV" },
 };
 
 /* ---------- About ---------- */

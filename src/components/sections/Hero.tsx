@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { hero } from "@/data/portfolio";
+import { Download } from "lucide-react";
+import { hero, profile } from "@/data/portfolio";
 import { BlurFade } from "@/components/BlurFade";
 
 /** Glowing blobs, floating shapes and particles behind the hero text. They drift with the mouse. */
@@ -113,6 +114,14 @@ export function Hero() {
               className="rounded-full border border-border bg-transparent px-7 py-3.5 text-sm font-medium text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/60 hover:text-primary"
             >
               {hero.secondaryButton.label}
+            </a>
+            <a
+              href={profile.resume}
+              download
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-transparent px-7 py-3.5 text-sm font-medium text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/60 hover:text-primary"
+            >
+              <Download size={16} />
+              {hero.resumeButton.label}
             </a>
           </div>
         </BlurFade>
