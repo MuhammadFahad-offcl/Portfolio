@@ -2,6 +2,7 @@ import { FormEvent, useEffect, useRef, useState } from "react";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import fahadPhoto from "./assets/fahad.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -423,7 +424,18 @@ function App() {
 
             <div className="about-grid">
               <div className="profile-card glass-card" data-reveal="left">
-                <div className="profile-orb">MF</div>
+                <div className="profile-photo-wrap">
+                  <div className="profile-glow" aria-hidden="true" />
+                  <div className="profile-ring" aria-hidden="true" />
+                  <img
+                    src={fahadPhoto}
+                    alt="Muhammad Fahad"
+                    className="profile-photo"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div className="profile-shadow" aria-hidden="true" />
+                </div>
                 <div className="profile-footer glass-card">
                   <span>Founder</span>
                   <strong>VoxAi</strong>
