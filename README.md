@@ -96,7 +96,7 @@ clients can reach me directly.
     ├── hooks/useTheme.ts       theme switching and persistence
     └── components/
         ├── Navbar, Footer, Loader, ScrollProgress, CustomCursor
-        ├── BlurFade, SectionLabel, BrandIcons, ImageLightbox
+        ├── BlurFade, SectionLabel, BrandIcons, ImageLightbox, ProjectDialog
         └── sections/           Hero, About, Skills, ClientWork, Projects, Credentials, Contact
 ```
 
@@ -111,6 +111,7 @@ clients can reach me directly.
 | Profile photo | Replace `public/fahad.webp` |
 | Resume | Replace `public/Muhammad_Fahad_Resume.pdf` (same file name) |
 | Colors for light / dark mode | `:root` and `.dark` at the top of `src/index.css` |
+| A project's "View Details" panel (overview, steps, tech stack, link) | Add `details` to that project in `src/data/portfolio.ts` (see the Lead Engine entry) |
 | Client projects and demo videos | `clientWork` in `src/data/portfolio.ts` (videos go in `public/media/`) |
 | Certificates | Add `certificate: { image, id }` to a credential (images go in `public/media/`) |
 | Section order | `src/App.tsx` |

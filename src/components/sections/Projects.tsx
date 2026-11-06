@@ -1,9 +1,14 @@
+import { useCallback, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { projects } from "@/data/portfolio";
 import { SectionLabel } from "@/components/SectionLabel";
+import { ProjectDialog } from "@/components/ProjectDialog";
 
 export function Projects() {
+  const [selected, setSelected] = useState<(typeof projects)[number] | null>(null);
+  const close = useCallback(() => setSelected(null), []);
+
   return (
     <section id="projects" className="relative py-32">
       <div className="mx-auto max-w-7xl px-6">
@@ -64,9 +69,13 @@ export function Projects() {
                     ))}
                   </div>
                   <div className="mt-6 flex items-center justify-between border-t border-border/50 pt-4">
-                    <span className="text-xs text-muted-foreground">Case study</span>
+                    <span className="text-xs text-muted-foreground">
+                      {project.details?.status ? project.details.status.split("·")[0].trim() : "Case study"}
+                    </span>
                     <button
                       type="button"
+                      onClick={() => setSelected(project)}
+                      aria-haspopup="dialog"
                       className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-3.5 py-1.5 text-xs font-semibold text-primary transition-all duration-300 hover:border-primary/50 hover:bg-primary hover:text-primary-foreground"
                     >
                       View Details
@@ -82,6 +91,8 @@ export function Projects() {
           })}
         </div>
       </div>
+
+      <ProjectDialog project={selected} onClose={close} />
     </section>
   );
 }

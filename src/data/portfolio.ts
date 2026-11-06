@@ -15,6 +15,7 @@ import {
   Hotel,
   MapPin,
   MessageSquare,
+  Radar,
   Share2,
   Workflow,
   type LucideIcon,
@@ -140,7 +141,24 @@ export const clientWork: {
 ];
 
 /* ---------- Projects ---------- */
-export const projects: { icon: LucideIcon; title: string; desc: string; tags: string[] }[] = [
+export type ProjectDetails = {
+  status?: string;
+  overview: string;
+  steps?: { title: string; text: string }[];
+  stack: { group: string; items: string[] }[];
+  note?: string;
+  link?: { label: string; href: string };
+};
+
+// `details` is optional: it fills the "View Details" panel. Projects without it
+// show their description and tags there instead.
+export const projects: {
+  icon: LucideIcon;
+  title: string;
+  desc: string;
+  tags: string[];
+  details?: ProjectDetails;
+}[] = [
   {
     icon: MessageSquare,
     title: "WhatsApp AI Agent",
@@ -172,10 +190,33 @@ export const projects: { icon: LucideIcon; title: string; desc: string; tags: st
     tags: ["Agentic AI", "AI Agents", "LLM", "Tools"],
   },
   {
-    icon: MessageSquare,
-    title: "Lead Gen Chatbot",
-    desc: "AI-powered chatbot that qualifies leads 24/7, captures contact details, and routes hot prospects straight to the sales pipeline.",
-    tags: ["AI", "Chatbot", "Lead Gen", "n8n"],
+    icon: Radar,
+    title: "VoxFlow Lead Engine",
+    desc: "AI agent system that finds local businesses, scores how much they need automation, and calls them in Urdu with a voice agent to book meetings — all from one dashboard.",
+    tags: ["AI Agents", "HazelJS", "Vapi", "Next.js"],
+    details: {
+      status: "In development · v1 Nov 2026",
+      overview:
+        "An AI agent system I'm building for VoxFlow to find new clients on autopilot. Give it a niche and a city — the first target is dental clinics in Lahore — and it finds the businesses, works out how much each one needs AI automation with real evidence, matches the right VoxFlow service, then calls the business in Urdu with an AI voice agent and books a video meeting with me. Every step is tracked on one dashboard.",
+      steps: [
+        { title: "Discover", text: "Pulls businesses from Google Maps, removes duplicates and keeps only ideal clients." },
+        { title: "Enrich", text: "Reads each business's website, reviews and public information." },
+        { title: "Score", text: "Rates the need for automation from 0 to 100 using 13 evidence-backed signals: hot, warm or cold." },
+        { title: "Match", text: "Picks the best-fit service from VoxFlow's catalog with vector search plus an LLM check." },
+        { title: "Call", text: "Writes a personalised Urdu script; once I approve the campaign, a voice agent makes the call." },
+        { title: "Book & log", text: "Books a slot on my Google Calendar during the call and logs the outcome on the dashboard." },
+      ],
+      stack: [
+        { group: "AI & agents", items: ["HazelJS agents", "Claude (Anthropic)", "Vapi voice AI", "pgvector"] },
+        { group: "Data & enrichment", items: ["Apify (Google Maps)", "Lightpanda browser", "Perplexity"] },
+        { group: "Backend", items: ["Node.js", "TypeScript", "PostgreSQL", "Prisma", "Zod"] },
+        { group: "Dashboard", items: ["Next.js", "React", "Tailwind CSS"] },
+        { group: "Integrations", items: ["Google Calendar API", "Webhooks"] },
+        { group: "Engineering", items: ["Docker", "Jest", "GitHub Actions CI", "ESLint", "Prettier"] },
+      ],
+      note: "Calls responsibly: the agent says it's an AI, calls only within set hours, never more than twice, and honours do-not-call requests.",
+      link: { label: "View on GitHub", href: "https://github.com/MuhammadFahad-offcl/voxflow-lead-engine" },
+    },
   },
 ];
 
