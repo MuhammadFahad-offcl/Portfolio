@@ -492,98 +492,26 @@ textarea {
     rgba(255, 255, 255, 0.72);
 }
 
-.profile-photo-wrap {
-  position: absolute;
-  inset: 2.25rem 1rem 6.5rem;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-}
-
-.profile-glow {
+.profile-orb {
   position: absolute;
   left: 50%;
-  top: 44%;
-  width: 78%;
-  aspect-ratio: 1;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 160px;
+  height: 160px;
   border-radius: 999px;
+  transform: translate(-50%, -56%);
   background: var(--gradient);
-  opacity: 0.28;
-  filter: blur(48px);
-  transform: translate(-50%, -50%);
-  animation: glow-breathe 6s ease-in-out infinite;
-}
-
-.profile-ring {
-  position: absolute;
-  left: 50%;
-  top: 44%;
-  width: 70%;
-  aspect-ratio: 1;
-  border-radius: 999px;
-  border: 1px dashed rgba(31, 78, 255, 0.22);
-  transform: translate(-50%, -50%);
-  animation: ring-spin 40s linear infinite;
-}
-
-.profile-photo {
-  position: relative;
-  z-index: 1;
-  display: block;
-  height: 100%;
-  max-width: 100%;
-  object-fit: contain;
-  object-position: bottom center;
-  filter: drop-shadow(0 26px 40px rgba(15, 23, 42, 0.18));
-  animation: photo-float 6s ease-in-out infinite;
-  will-change: transform;
-  user-select: none;
-  -webkit-user-drag: none;
-}
-
-.profile-shadow {
-  position: absolute;
-  bottom: -0.4rem;
-  left: 50%;
-  width: 55%;
-  height: 18px;
-  border-radius: 999px;
-  background: radial-gradient(ellipse at center, rgba(15, 23, 42, 0.22), transparent 70%);
-  transform: translateX(-50%);
-  animation: shadow-float 6s ease-in-out infinite;
-}
-
-@keyframes photo-float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-16px) rotate(-0.6deg); }
-}
-
-@keyframes shadow-float {
-  0%, 100% { transform: translateX(-50%) scaleX(1); opacity: 1; }
-  50% { transform: translateX(-50%) scaleX(0.8); opacity: 0.55; }
-}
-
-@keyframes ring-spin {
-  to { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-@keyframes glow-breathe {
-  0%, 100% { opacity: 0.22; transform: translate(-50%, -50%) scale(0.95); }
-  50% { opacity: 0.34; transform: translate(-50%, -50%) scale(1.05); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .profile-photo,
-  .profile-shadow,
-  .profile-glow,
-  .profile-ring {
-    animation: none;
-  }
+  box-shadow: var(--glow);
+  color: white;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
 }
 
 .profile-footer {
   position: absolute;
-  z-index: 2;
   left: 1.5rem;
   right: 1.5rem;
   bottom: 1.5rem;
