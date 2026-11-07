@@ -198,16 +198,18 @@ export function Contact() {
             transition={{ duration: 0.7 }}
             className="glass rounded-3xl p-8 shadow-soft lg:col-span-3"
           >
-            <input
-              type="text"
-              name="_honey"
-              value={honeypot}
-              onChange={(e) => setHoneypot(e.target.value)}
-              tabIndex={-1}
-              autoComplete="off"
-              aria-hidden="true"
-              className="hidden"
-            />
+            <div className="absolute -left-[9999px] top-auto h-0 w-0 overflow-hidden opacity-0" aria-hidden="true">
+              <label htmlFor="hp-website">Do not fill this field</label>
+              <input
+                id="hp-website"
+                type="text"
+                name="_honey"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </div>
             <div className="grid gap-5 sm:grid-cols-2">
               {(
                 [

@@ -124,13 +124,22 @@
 /* Smooth color change when switching light/dark mode */
 html,
 body,
-*,
-::before,
-::after {
+header,
+footer,
+nav,
+main,
+section,
+article,
+aside,
+button,
+a,
+input,
+textarea,
+.glass {
   transition:
-    background-color 0.3s,
-    border-color 0.3s,
-    color 0.3s;
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
 }
 
 /* ------------------------------------------------------------------

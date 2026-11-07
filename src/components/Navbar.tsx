@@ -13,11 +13,19 @@ export function Navbar() {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 30);
+
+      const isBottom =
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 80;
+      if (isBottom) {
+        setActive("contact");
+        return;
+      }
+
       for (const link of navLinks) {
         const section = document.getElementById(link.href.slice(1));
         if (!section) continue;
         const rect = section.getBoundingClientRect();
-        if (rect.top <= 120 && rect.bottom >= 120) {
+        if (rect.top <= 140 && rect.bottom >= 140) {
           setActive(link.href.slice(1));
           break;
         }
