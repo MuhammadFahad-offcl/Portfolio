@@ -162,8 +162,42 @@ export const projects: {
   {
     icon: MessageSquare,
     title: "WhatsApp AI Agent",
-    desc: "Intelligent WhatsApp automation agent handling user queries, automated responses, and workflow management using AI tools and backend integrations.",
-    tags: ["AI Agent", "n8n", "Node.js", "Webhooks"],
+    desc: "Autonomous multimodal AI agent built with n8n, OpenAI, and Supabase that manages real-time appointments and clinic FAQs over WhatsApp voice notes and text.",
+    tags: ["Multimodal AI", "n8n", "OpenAI", "Supabase RAG"],
+    details: {
+      status: "Production-ready · Open source",
+      overview:
+        "A production-ready, multimodal AI agent built with n8n, OpenAI, Supabase, and Google Sheets. It autonomously handles inbound text and voice messages over WhatsApp, manages real-time appointments (booking, rescheduling, cancellation, and history), and answers domain-specific FAQs using Retrieval-Augmented Generation (RAG).",
+      steps: [
+        {
+          title: "Ingest & RAG Indexing",
+          text: "Extracts clinic documentation from Google Drive PDFs, computes embeddings with OpenAI, and stores vector representations in Supabase.",
+        },
+        {
+          title: "Inbound & Voice Pipeline",
+          text: "Captures WhatsApp webhooks, triggers instant read receipts (blue ticks) and typing indicators, and transcribes voice notes with OpenAI Whisper.",
+        },
+        {
+          title: "AI Agent & Tools",
+          text: "n8n AI Agent with GPT-4o and conversation memory queries the Supabase vector store for FAQs and executes appointment lifecycle tools on Google Sheets.",
+        },
+        {
+          title: "Multimodal Delivery",
+          text: "Dynamically routes responses: delivers text messages or synthesizes natural voice notes via OpenAI TTS uploaded directly back to WhatsApp.",
+        },
+      ],
+      stack: [
+        { group: "AI & Multimodal", items: ["OpenAI GPT-4o", "OpenAI Whisper", "OpenAI TTS", "text-embedding-3-small"] },
+        { group: "Workflow Engine", items: ["n8n", "AI Agent Node", "Window Memory", "Webhooks"] },
+        { group: "Data & Knowledge", items: ["Supabase (Vector Store)", "Google Sheets DB", "Google Drive API"] },
+        { group: "Messaging & UX", items: ["Meta WhatsApp Cloud API", "Blue Ticks", "Typing Indicator", "Voice Notes"] },
+      ],
+      note: "Features native UX feedback (blue ticks, typing indicators) and full bidirectional voice-to-voice communication for a natural patient experience.",
+      link: {
+        label: "View on GitHub",
+        href: "https://github.com/MuhammadFahad-offcl/WhatsApp-Appointment-Agent-n8n",
+      },
+    },
   },
   {
     icon: Share2,
