@@ -10,6 +10,7 @@ import { ClientWork } from "@/components/sections/ClientWork";
 import { Projects } from "@/components/sections/Projects";
 import { Credentials } from "@/components/sections/Credentials";
 import { Contact } from "@/components/sections/Contact";
+import { ROICalculator } from "@/components/sections/ROICalculator";
 
 /* Page order — move, add or remove sections here. */
 export default function App() {
@@ -26,6 +27,7 @@ export default function App() {
       <Projects />
       <Credentials />
       <Contact />
+      <ROICalculator />
       <Footer />
     </main>
   );
