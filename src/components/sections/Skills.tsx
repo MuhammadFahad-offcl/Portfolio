@@ -2,6 +2,12 @@ import { motion } from "framer-motion";
 import { skillGroups } from "@/data/portfolio";
 import { SectionLabel } from "@/components/SectionLabel";
 
+const languageLinks: Record<string, string> = {
+  "C++": "https://github.com/MuhammadFahad-offcl?tab=repositories&q=&type=&language=c%2B%2B",
+  Python: "https://github.com/MuhammadFahad-offcl?tab=repositories&q=&type=&language=python",
+  TypeScript: "https://github.com/MuhammadFahad-offcl/Portfolio",
+};
+
 export function Skills() {
   return (
     <section id="skills" className="relative py-32">
@@ -33,18 +39,34 @@ export function Skills() {
                 <span className="text-gradient">{group.title}</span>
               </h3>
               <div className="relative flex flex-wrap gap-2">
-                {group.chips.map((chip, j) => (
-                  <motion.span
-                    key={chip}
-                    initial={{ opacity: 0, y: 8 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.35, delay: j * 0.04 }}
-                    className="rounded-full border border-primary/15 bg-primary/5 px-3 py-1.5 text-xs font-medium text-foreground/85 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-primary/10 hover:text-primary"
-                  >
-                    {chip}
-                  </motion.span>
-                ))}
+                {group.chips.map((chip, j) => {
+                  const href = group.title === "Languages" ? languageLinks[chip] : undefined;
+                  const className =
+                    "rounded-full border border-primary/15 bg-primary/5 px-3 py-1.5 text-xs font-medium text-foreground/85 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-primary/10 hover:text-primary";
+                  const animationProps = {
+                    initial: { opacity: 0, y: 8 },
+                    whileInView: { opacity: 1, y: 0 },
+                    viewport: { once: true },
+                    transition: { duration: 0.35, delay: j * 0.04 },
+                  };
+
+                  return href ? (
+                    <motion.a
+                      key={chip}
+                      {...animationProps}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`${className} hover:bg-slate-200 transition-colors`}
+                    >
+                      {chip}
+                    </motion.a>
+                  ) : (
+                    <motion.span key={chip} {...animationProps} className={className}>
+                      {chip}
+                    </motion.span>
+                  );
+                })}
               </div>
             </motion.div>
           ))}

@@ -82,14 +82,14 @@ export const about = {
 
 /* ---------- Skills ---------- */
 export const skillGroups: { title: string; chips: string[] }[] = [
-  { title: "Languages", chips: ["C++", "TypeScript", "JavaScript"] },
+  { title: "Languages", chips: ["C++", "Python", "TypeScript"] },
   { title: "AI / Agentic AI", chips: ["AI Agents", "Agentic AI Systems", "Multi-Modal AI"] },
   { title: "Automation", chips: ["n8n (Core)", "Workflow Automation", "API Integrations"] },
-  { title: "Web Development", chips: ["React / Next.js", "Tailwind CSS", "Framer Motion"] },
+  { title: "Web Development", chips: ["React / Next.js", "Tailwind CSS"] },
   { title: "Backend & Databases", chips: ["Node.js", "Supabase", "PostgreSQL"] },
   {
     title: "Tools",
-    chips: ["Lovable", "GitHub", "Vercel", "VS Code", "Postman", "Docker basics"],
+    chips: ["Lovable", "GitHub", "Vercel", "VS Code", "Docker basics"],
   },
   {
     title: "Platforms & APIs",
