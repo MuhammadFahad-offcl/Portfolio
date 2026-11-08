@@ -5,6 +5,8 @@ import { z } from "zod";
 import { profile } from "@/data/portfolio";
 import { SectionLabel } from "@/components/SectionLabel";
 import { GithubIcon, LinkedinIcon } from "@/components/BrandIcons";
+import posthog from "@/posthog";
+import { portfolioLogger } from "@/posthog-logger";
 
 const schema = z.object({
   name: z.string().trim().min(1, "Name required").max(100),
@@ -106,6 +108,8 @@ export function Contact() {
       const data = (await res.json().catch(() => ({}))) as { success?: string | boolean };
       if (!res.ok || String(data.success) !== "true") throw new Error("send failed");
 
+      posthog.capture("contact_form_submitted", { delivery_service: "formsubmit" });
+      portfolioLogger.contactFormDelivered();
       setSent(true);
       setForm(emptyForm);
       setTimeout(() => setSent(false), 4000);
