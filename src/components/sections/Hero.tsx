@@ -72,7 +72,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-background px-6 text-center"
+      className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-background px-4 text-center sm:px-6 md:px-12"
     >
       <div className="pointer-events-none absolute inset-0 grid-bg opacity-60" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-radial" />

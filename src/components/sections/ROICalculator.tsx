@@ -39,7 +39,7 @@ export function ROICalculator() {
 
   return (
     <section id="roi-calculator" className="relative py-32">
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-12">
         <SectionLabel>ROI Calculator</SectionLabel>
 
         <motion.h2
@@ -67,10 +67,10 @@ export function ROICalculator() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="mx-auto mt-16 max-w-4xl"
+          className="mx-auto mt-16 w-full max-w-4xl"
         >
           {/* ─── Main Card ─── */}
-          <div className="overflow-hidden rounded-3xl border border-border bg-white shadow-lg dark:bg-card">
+          <div className="w-full max-w-full overflow-hidden rounded-3xl border border-border bg-white shadow-lg dark:bg-card">
             {/* ── Market Toggle ── */}
             <div className="flex items-center justify-center border-b border-border/60 bg-secondary/40 px-6 py-4">
               <div className="relative flex rounded-full bg-secondary p-1">

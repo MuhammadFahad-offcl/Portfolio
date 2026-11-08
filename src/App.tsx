@@ -15,7 +15,7 @@ import { ROICalculator } from "@/components/sections/ROICalculator";
 /* Page order — move, add or remove sections here. */
 export default function App() {
   return (
-    <main className="relative">
+    <main className="relative w-full max-w-full overflow-x-hidden">
       <Loader />
       <ScrollProgress />
       <CustomCursor />

@@ -4,9 +4,13 @@ import { about, profile } from "@/data/portfolio";
 import { SectionLabel } from "@/components/SectionLabel";
 
 export function About() {
+  const [missionBeforeSkills, missionAfterSkills] = about.mission.split(
+    "C++, OOP, DSA, and database design.",
+  );
+
   return (
     <section id="about" className="relative py-32">
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-12">
         <SectionLabel>About Me</SectionLabel>
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
@@ -38,7 +42,7 @@ export function About() {
                   loading="lazy"
                   decoding="async"
                   draggable={false}
-                  className="animate-photo-float h-full w-auto max-w-full select-none object-contain object-bottom"
+                  className="animate-photo-float h-full w-full max-w-full select-none object-contain object-bottom"
                 />
               </div>
               <div className="absolute bottom-6 left-6 right-6 glass rounded-2xl p-4">
@@ -71,7 +75,11 @@ export function About() {
               <span className="font-medium text-foreground">n8n automation</span>, and modern web development that
               turns manual chaos into intelligent systems.
             </p>
-            <p className="text-base leading-relaxed text-muted-foreground">{about.mission}</p>
+            <p className="text-base leading-relaxed text-muted-foreground">
+              {missionBeforeSkills}
+              <span className="font-bold text-[#111154]">C++, OOP, DSA, and database design.</span>
+              {missionAfterSkills}
+            </p>
 
             <div className="grid gap-3 sm:grid-cols-2">
               {about.facts.map((fact, i) => {

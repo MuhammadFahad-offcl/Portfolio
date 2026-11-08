@@ -11,7 +11,7 @@ export function Credentials() {
 
   return (
     <section id="certifications" className="relative py-32">
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 md:px-12">
         <SectionLabel>Certifications</SectionLabel>
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
@@ -87,7 +87,7 @@ export function Credentials() {
                         height={780}
                         loading="lazy"
                         decoding="async"
-                        className="block h-auto w-full transition-transform duration-500 group-hover/cert:scale-[1.03]"
+                        className="block h-auto w-full max-w-full transition-transform duration-500 group-hover/cert:scale-[1.03]"
                       />
                       <span className="absolute inset-0 flex items-center justify-center bg-primary/0 opacity-0 transition-all duration-300 group-hover/cert:bg-primary/40 group-hover/cert:opacity-100">
                         <span className="flex size-11 items-center justify-center rounded-full bg-white/90 text-primary">
