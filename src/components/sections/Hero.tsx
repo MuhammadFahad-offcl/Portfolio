@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Download } from "lucide-react";
 import { hero, profile } from "@/data/portfolio";
 import { BlurFade } from "@/components/BlurFade";
+import posthog from "@/posthog";
 
 /** Glowing blobs, floating shapes and particles behind the hero text. They drift with the mouse. */
 function HeroBackground() {
@@ -118,6 +119,7 @@ export function Hero() {
             <a
               href={profile.resume}
               download
+              onClick={() => posthog.capture("resume_downloaded", { placement: "hero" })}
               className="inline-flex items-center gap-2 rounded-full border border-border bg-transparent px-7 py-3.5 text-sm font-medium text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/60 hover:text-primary"
             >
               <Download size={16} />

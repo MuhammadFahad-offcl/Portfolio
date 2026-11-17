@@ -4,6 +4,8 @@ import { ArrowUpRight } from "lucide-react";
 import { projects } from "@/data/portfolio";
 import { SectionLabel } from "@/components/SectionLabel";
 import { ProjectDialog } from "@/components/ProjectDialog";
+import posthog from "@/posthog";
+import { portfolioLogger } from "@/posthog-logger";
 
 export function Projects() {
   const [selected, setSelected] = useState<(typeof projects)[number] | null>(null);
@@ -74,7 +76,11 @@ export function Projects() {
                     </span>
                     <button
                       type="button"
-                      onClick={() => setSelected(project)}
+                      onClick={() => {
+                        posthog.capture("project_details_viewed", { project_title: project.title });
+                        portfolioLogger.projectDetailsOpened(project.title);
+                        setSelected(project);
+                      }}
                       aria-haspopup="dialog"
                       className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-3.5 py-1.5 text-xs font-semibold text-primary transition-all duration-300 hover:border-primary/50 hover:bg-primary hover:text-primary-foreground"
                     >

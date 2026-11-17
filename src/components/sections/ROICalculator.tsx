@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { Calculator, ArrowRight, TrendingUp, Clock, Banknote } from "lucide-react";
 import { profile } from "@/data/portfolio";
 import { SectionLabel } from "@/components/SectionLabel";
+import posthog from "@/posthog";
+import { portfolioLogger } from "@/posthog-logger";
 
 /* ── Market config ── */
 type Market = "PKR" | "AED";
@@ -230,6 +232,14 @@ export function ROICalculator() {
                   target="_blank"
                   rel="noreferrer"
                   data-cursor-hover
+                  onClick={() => {
+                    posthog.capture("roi_consultation_requested", {
+                      market,
+                      weekly_manual_hours: hours,
+                      hourly_rate: rate,
+                    });
+                    portfolioLogger.consultationRequested(market);
+                  }}
                   className="magnetic-btn group mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-glow"
                 >
                   Automate This Now

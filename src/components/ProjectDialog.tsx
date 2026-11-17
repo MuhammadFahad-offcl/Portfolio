@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, X } from "lucide-react";
 import type { projects } from "@/data/portfolio";
+import posthog from "@/posthog";
 
 type Project = (typeof projects)[number];
 
@@ -71,6 +72,7 @@ export function ProjectDialog({ project, onClose }: Props) {
 function ProjectBody({ project }: { project: Project }) {
   const Icon = project.icon;
   const details = project.details;
+  const link = details?.link;
   const sectionTitle = "mb-4 text-xs font-semibold uppercase tracking-widest text-muted-foreground";
 
   return (
@@ -147,14 +149,20 @@ function ProjectBody({ project }: { project: Project }) {
         </p>
       )}
 
-      {details?.link && (
+      {link && (
         <a
-          href={details.link.href}
+          href={link.href}
           target="_blank"
           rel="noreferrer"
+          onClick={() =>
+            posthog.capture("project_external_link_opened", {
+              project_title: project.title,
+              link_label: link.label,
+            })
+          }
           className="group mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:shadow-glow"
         >
-          {details.link.label}
+          {link.label}
           <ArrowUpRight size={15} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
         </a>
       )}
