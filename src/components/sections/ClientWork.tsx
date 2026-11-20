@@ -77,7 +77,7 @@ function PhoneVideo({ video, title }: { video: Video; title: string }) {
 
 export function ClientWork() {
   return (
-    <section id="client-work" className="relative py-32">
+    <section id="client-work" className="relative py-16 md:py-20">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-12">
         <SectionLabel>Client Work</SectionLabel>
         <motion.h2

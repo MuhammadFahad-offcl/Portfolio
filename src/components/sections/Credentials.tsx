@@ -10,7 +10,7 @@ export function Credentials() {
   const closePreview = useCallback(() => setPreview(null), []);
 
   return (
-    <section id="certifications" className="relative py-32">
+    <section id="certifications" className="relative py-16 md:py-20">
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 md:px-12">
         <SectionLabel>Certifications</SectionLabel>
         <motion.h2

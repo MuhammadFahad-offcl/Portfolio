@@ -10,7 +10,7 @@ const languageLinks: Record<string, string> = {
 
 export function Skills() {
   return (
-    <section id="skills" className="relative py-32">
+    <section id="skills" className="relative py-16 md:py-20">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-12">
         <SectionLabel>Skills</SectionLabel>
         <motion.h2

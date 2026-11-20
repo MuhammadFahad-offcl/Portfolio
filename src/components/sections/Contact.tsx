@@ -117,7 +117,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-32">
+    <section id="contact" className="relative py-16 md:py-20">
       <div className="absolute inset-0 bg-gradient-radial opacity-60" />
       <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6 md:px-12">
         <SectionLabel>Contact</SectionLabel>

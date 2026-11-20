@@ -38,7 +38,7 @@ export function ROICalculator() {
   );
 
   return (
-    <section id="roi-calculator" className="relative py-32">
+    <section id="roi-calculator" className="relative py-16 md:py-20">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-12">
         <SectionLabel>ROI Calculator</SectionLabel>
 
