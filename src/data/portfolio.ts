@@ -20,7 +20,6 @@ import {
   Workflow,
   type LucideIcon,
 } from "lucide-react";
-import type { EliasBook } from "@/components/ui/elias-author-hero";
 
 /* ---------- Basic info ---------- */
 export const profile = {
@@ -55,114 +54,16 @@ export const navLinks = [
   { href: "#contact", label: "Contact" },
 ];
 
-/* ---------- Hero (top of page) ----------
-   The editorial header at the top: giant name, cut-out photo, a carousel
-   of projects drawn as hardcover books and a letter that types itself.
-   Component: src/components/ui/elias-author-hero.tsx
-   Colors: "HERO HEADER" block in src/index.css */
+/* ---------- Hero (top of page) ---------- */
 export const hero = {
-  // The two giant lines: the first in the accent color, the second in ink.
-  // `size` is each line's font size in design units (the layout is 1280 wide):
-  // keep the first line under ~880 wide (the book card sits to its right) and
-  // the second under ~1010. Shorten or lengthen a name? Adjust these numbers.
-  name: { first: "Fahad", last: "Muhammad", full: profile.name },
-  nameSize: { first: 240, last: 148 },
-  brand: { name: "Fahad", href: "#home" },
-  navLinks: {
-    left: [
-      { label: "Home", href: "#home", active: true },
-      { label: "About", href: "#about" },
-    ],
-    right: [
-      { label: "Work", href: "#client-work" },
-      { label: "Projects", href: "#projects" },
-    ],
-  },
-  navCta: { label: "Let's Talk", href: "#contact" },
-  navStatus: { label: "Available", detail: "AI automation projects" },
-  intro: {
-    roles: ["AI Automation", "Agentic AI", "Full-Stack"],
-    headline: ["AI agents that", "take the busywork", "off your plate."],
-    description:
-      "I build custom AI agents, production-grade n8n workflows and web apps that help businesses scale.",
-  },
-  // A transparent cut-out works best (the photo stands on the bottom edge).
-  portrait: {
-    src: profile.photo,
-    width: 900,
-    height: 950,
-    alt: "Muhammad Fahad in a dark suit and tie",
-  },
-  // Projects shown as hardcover books. art: "sunrise" | "lamp" | "path" | "days"
-  books: [
-    {
-      label: "Live client work",
-      title: "WhatsApp Appointment Agent",
-      coverLines: ["Whats-", "App", "booking", "agent"],
-      topics: ["n8n", "OpenAI", "RAG"],
-      art: "days",
-      colors: { cover: "#d3e6f1", type: "#171412", spine: "#a3c8de" },
-      chapter: "Case study",
-      chapterTitle: "Booked in ten seconds",
-      text: "An AI receptionist on WhatsApp that answers patients the moment they message and books their visit, around the clock, in Roman Urdu or English.",
-    },
-    {
-      label: "In development",
-      title: "VoxFlow Lead Engine",
-      coverLines: ["VoxFlow", "lead", "engine"],
-      topics: ["AI Agents", "Voice", "Next.js"],
-      art: "path",
-      colors: { cover: "#e2daf0", type: "#171412", spine: "#b4a6d8" },
-      chapter: "Case study",
-      chapterTitle: "Clients on autopilot",
-      text: "Finds local businesses, scores how much they need automation, then calls them in Urdu with a voice agent and books a meeting, all from one dashboard.",
-    },
-    {
-      label: "Featured project",
-      title: "Agentic AI Workflow",
-      coverLines: ["Agentic", "AI", "work-", "flow"],
-      topics: ["Agents", "LLM", "Tools"],
-      art: "lamp",
-      colors: { cover: "#d3e3d2", type: "#171412", spine: "#8fb59a" },
-      chapter: "Case study",
-      chapterTitle: "Plan, call, deliver",
-      text: "A multi-step agent that plans, calls tools and coordinates sub-agents to finish complex business tasks on its own.",
-    },
-    {
-      label: "Featured project",
-      title: "Social Media Automation Agent",
-      coverLines: ["Social", "media", "on auto"],
-      topics: ["AI", "n8n", "APIs"],
-      art: "sunrise",
-      colors: { cover: "#f8dccb", type: "#171412", spine: "#ff9f80" },
-      chapter: "Case study",
-      chapterTitle: "Posting, handled",
-      text: "AI-powered posting, scheduling and engagement workflows that keep every platform active without anyone babysitting them.",
-    },
-  ] satisfies EliasBook[],
-  bookCard: { href: "#projects", open: "Open", close: "Close and show the next project", folio: "01" },
-  // The letter that types itself, one promise after another.
-  letter: {
-    eyebrow: "A note to my next client",
-    greeting: "Dear client,",
-    stamp: "Signed & shipped",
-    postmark: "Delivered",
-    seal: "F",
-    sealing: "Sealed & delivered",
-    messages: [
-      "I will automate the work your team repeats every single day.",
-      "I will build agents that answer customers in seconds, day and night.",
-      "I will ship it, monitor it and keep it running after launch.",
-      "I will explain every workflow in plain words, no jargon.",
-    ],
-    counter: "Promise",
-  },
-  socialLinks: [
-    { label: "LinkedIn", href: profile.linkedin },
-    { label: "GitHub", href: profile.github },
-    { label: "WhatsApp", href: profile.whatsappLink },
-    { label: "Resume", href: profile.resume },
-  ],
+  badge: "Available for AI automation projects",
+  title: "Hi, I'm Muhammad Fahad",
+  subtitle: "AI Automation & Agentic AI Specialist",
+  description:
+    "Helping businesses scale by integrating intelligent custom AI agents, production-grade n8n automation workflows, and robust web applications.",
+  primaryButton: { label: "Hire Me", href: "#contact" },
+  secondaryButton: { label: "View Projects", href: "#projects" },
+  resumeButton: { label: "Download CV" },
 };
 
 /* ---------- About ---------- */

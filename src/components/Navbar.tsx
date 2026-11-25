@@ -8,15 +8,11 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [active, setActive] = useState("home");
-  // The hero has its own navbar, so this one slides in only once the hero is scrolled past
-  const [pastHero, setPastHero] = useState(false);
   const { theme, toggle } = useTheme();
 
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 30);
-      const heroSection = document.getElementById("home");
-      setPastHero(heroSection ? heroSection.getBoundingClientRect().bottom < 80 : window.scrollY > 30);
 
       const isBottom =
         window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 80;
@@ -44,13 +40,10 @@ export function Navbar() {
 
   return (
     <motion.header
-      initial={false}
-      animate={pastHero ? { y: 0, opacity: 1 } : { y: -110, opacity: 0 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      aria-hidden={!pastHero}
-      // React 18's types lack `inert`; an empty string renders the attribute (keeps hidden links out of tab order)
-      {...(pastHero ? {} : { inert: "" })}
-      className={`fixed left-0 right-0 top-0 z-50 transition-[padding] duration-500 ${scrolled ? "py-3" : "py-6"} ${pastHero ? "" : "pointer-events-none"}`}
+      initial={{ y: -40, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-500 ${scrolled ? "py-3" : "py-6"}`}
     >
       <div className="mx-auto max-w-7xl px-6">
         <div

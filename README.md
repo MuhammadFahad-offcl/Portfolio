@@ -34,13 +34,12 @@ clients can reach me directly.
 ## Highlights
 
 - **Light & dark themes** — follows the visitor's system setting and remembers their choice.
-- **Editorial hero header** — an ink-splash intro, a giant name with a cut-out portrait, an ink-spotlight cursor, projects shown as 3D hardcover books and a letter that types itself (`src/components/ui/elias-author-hero.tsx`).
-- **Polished motion** — staggered scroll reveals, custom cursor and a scroll progress bar, built with Framer Motion.
+- **Polished motion** — staggered scroll reveals, blur-in hero, mouse-reactive background, custom cursor and a scroll progress bar, built with Framer Motion.
 - **Fully responsive** — designed for phones, tablets and large screens, with a dedicated mobile menu.
 - **Working contact form** — schema-validated with Zod, delivered straight to my inbox, with a honeypot to filter spam bots.
 - **Real client work** — a live WhatsApp appointment agent running in production, shown with a video demo that plays only while on screen.
 - **Verifiable credentials** — certificates viewable full-size in an accessible lightbox.
-- **One-click resume download** — available from the hero's links and the contact section.
+- **One-click resume download** — available from the hero and the contact section.
 - **Content-driven architecture** — every piece of text, link, skill, project and credential lives in a single typed data file, so content updates never touch layout code.
 - **Lightweight & accessible** — no heavy 3D libraries, lazy-loaded imagery, semantic HTML, and reduced-motion support.
 
@@ -98,7 +97,6 @@ clients can reach me directly.
     └── components/
         ├── Navbar, Footer, Loader, ScrollProgress, CustomCursor
         ├── BlurFade, SectionLabel, BrandIcons, ImageLightbox, ProjectDialog
-        ├── ui/                 elias-author-hero (the hero header component)
         └── sections/           Hero, About, Skills, ClientWork, Projects, Credentials, Contact
 ```
 
