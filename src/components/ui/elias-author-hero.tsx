@@ -160,6 +160,8 @@ export interface EliasProps {
   motion?: Overrides< EliasMotion >
   /** Overrides for the opening splash timings. Default: the original design values */
   splash?: Partial< EliasSplash >
+  /** Whether the opening splash plays; false starts the hero's entrance straight away. Default: true */
+  showSplash?: boolean
   /** Forces reduced motion on or off; by default the visitor's prefers-reduced-motion setting is used */
   reducedMotion?: boolean
   /** Extra classes for the outer wrapper */
@@ -219,6 +221,7 @@ interface EliasContextValue {
   MOTION: EliasMotion
   SPLASH: EliasSplash
   REDUCED: boolean | undefined
+  SHOW_SPLASH: boolean
   ID: string
 }
 
@@ -1693,7 +1696,7 @@ const SPOT_SPRING = { stiffness: 380, damping: 36, mass: 0.6 }
  */
 const HeroSection = () => {
   // Context
-  const { BOOKS, ID, IMAGES, LETTER: letter, MOTION, NAME, NAME_SCALE, REDUCED } = useElias()
+  const { BOOKS, ID, IMAGES, LETTER: letter, MOTION, NAME, NAME_SCALE, REDUCED, SHOW_SPLASH } = useElias()
 
   // States
   const [opened, setOpened] = useState(false)
@@ -1740,7 +1743,7 @@ const HeroSection = () => {
   const spotActive = depthActive && composition && spotReady
 
   // The entrance waits for the splash to open, or plays at once when the visitor asks for reduced motion
-  const started = opened || prefersReduced
+  const started = opened || prefersReduced || !SHOW_SPLASH
 
   // The custom cursor replaces the system one only with a mouse, and never under reduced motion
   const cursorActive = finePointer && !prefersReduced
@@ -1836,7 +1839,7 @@ const HeroSection = () => {
     >
       <AuthorInkFilters tones={tones} />
       {cursorActive && <InkCursor />}
-      {!prefersReduced && <InkSplash onOpen={handleSplashOpen} />}
+      {!prefersReduced && SHOW_SPLASH && <InkSplash onOpen={handleSplashOpen} />}
 
       <IntroContext.Provider value={started}>
         <HeroNavbar />
@@ -3398,6 +3401,7 @@ const Elias = ({
   socialLinks = [],
   motion,
   splash,
+  showSplash = true,
   reducedMotion,
   className
 }: EliasProps) => {
@@ -3428,7 +3432,8 @@ const Elias = ({
       cursor: { ...DEFAULT_MOTION.cursor, ...motion?.cursor }
     },
     SPLASH: { ...DEFAULT_SPLASH, ...splash },
-    REDUCED: reducedMotion
+    REDUCED: reducedMotion,
+    SHOW_SPLASH: showSplash
   }
 
   return (

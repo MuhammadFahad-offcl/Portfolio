@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { skillGroups } from "@/data/portfolio";
 import { SectionLabel } from "@/components/SectionLabel";
 
@@ -13,7 +13,7 @@ export function Skills() {
     <section id="skills" className="relative py-16 md:py-20">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-12">
         <SectionLabel>Skills</SectionLabel>
-        <motion.h2
+        <m.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -21,11 +21,11 @@ export function Skills() {
           className="mx-auto mb-16 max-w-3xl text-center text-4xl font-bold md:text-5xl"
         >
           The <span className="text-gradient">stack</span> I build with
-        </motion.h2>
+        </m.h2>
 
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {skillGroups.map((group, i) => (
-            <motion.div
+            <m.div
               key={group.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -51,7 +51,7 @@ export function Skills() {
                   };
 
                   return href ? (
-                    <motion.a
+                    <m.a
                       key={chip}
                       {...animationProps}
                       href={href}
@@ -60,15 +60,15 @@ export function Skills() {
                       className={`${className} hover:bg-slate-200 transition-colors`}
                     >
                       {chip}
-                    </motion.a>
+                    </m.a>
                   ) : (
-                    <motion.span key={chip} {...animationProps} className={className}>
+                    <m.span key={chip} {...animationProps} className={className}>
                       {chip}
-                    </motion.span>
+                    </m.span>
                   );
                 })}
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>

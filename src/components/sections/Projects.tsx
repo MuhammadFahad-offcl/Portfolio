@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { projects } from "@/data/portfolio";
 import { SectionLabel } from "@/components/SectionLabel";
@@ -13,7 +13,7 @@ export function Projects() {
     <section id="projects" className="relative py-16 md:py-20">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-12">
         <SectionLabel>Projects</SectionLabel>
-        <motion.h2
+        <m.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -21,8 +21,8 @@ export function Projects() {
           className="text-center text-4xl font-bold md:text-5xl"
         >
           Things I've <span className="text-gradient">shipped</span>
-        </motion.h2>
-        <motion.p
+        </m.h2>
+        <m.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -30,13 +30,13 @@ export function Projects() {
           className="mx-auto mt-4 max-w-xl text-center text-muted-foreground"
         >
           A mix of AI, automation, and engineering work — built end-to-end.
-        </motion.p>
+        </m.p>
 
         <div className="mt-16 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, i) => {
             const Icon = project.icon;
             return (
-              <motion.article
+              <m.article
                 key={project.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -86,7 +86,7 @@ export function Projects() {
                     </button>
                   </div>
                 </div>
-              </motion.article>
+              </m.article>
             );
           })}
         </div>

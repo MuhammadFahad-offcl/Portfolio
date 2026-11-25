@@ -1,5 +1,5 @@
 import { useRef, type ReactNode } from "react";
-import { AnimatePresence, motion, useInView } from "framer-motion";
+import { AnimatePresence, m, useInView } from "framer-motion";
 
 type Props = {
   children: ReactNode;
@@ -17,7 +17,7 @@ export function BlurFade({ children, className, delay = 0, duration = 0.4, yOffs
 
   return (
     <AnimatePresence>
-      <motion.div
+      <m.div
         ref={ref}
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
@@ -30,7 +30,7 @@ export function BlurFade({ children, className, delay = 0, duration = 0.4, yOffs
         className={className}
       >
         {children}
-      </motion.div>
+      </m.div>
     </AnimatePresence>
   );
 }

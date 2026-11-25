@@ -10,4 +10,17 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    target: "es2020",
+    rollupOptions: {
+      output: {
+        // Libraries change far less often than the site, so they get their own long-cached files
+        manualChunks(id) {
+          if (!id.includes("node_modules")) return;
+          if (/[\\/]node_modules[\\/](react|react-dom|scheduler)[\\/]/.test(id)) return "react";
+          if (/[\\/]node_modules[\\/]gsap[\\/]/.test(id)) return "gsap";
+        },
+      },
+    },
+  },
 });

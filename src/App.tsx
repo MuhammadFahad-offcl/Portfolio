@@ -1,32 +1,33 @@
+import { lazy, Suspense } from "react";
+import { LazyMotion } from "framer-motion";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { CustomCursor } from "@/components/CustomCursor";
 import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/sections/Hero";
-import { About } from "@/components/sections/About";
-import { Skills } from "@/components/sections/Skills";
-import { ClientWork } from "@/components/sections/ClientWork";
-import { Projects } from "@/components/sections/Projects";
-import { Credentials } from "@/components/sections/Credentials";
-import { Contact } from "@/components/sections/Contact";
-import { ROICalculator } from "@/components/sections/ROICalculator";
 
-/* Page order — move, add or remove sections here. */
+/*
+ * The hero is in the main bundle so it paints first; the rest of the page is a separate chunk whose
+ * download starts right away (in parallel with the hero's), not when it scrolls into view, so in-page
+ * links always find their section. Section order lives in src/components/BelowFold.tsx.
+ */
+const belowFold = import("@/components/BelowFold");
+const BelowFold = lazy(() => belowFold);
+
+// Components animate with the light `m` renderer; its features download in their own chunk
+const loadMotionFeatures = () => import("@/lib/motion-features").then((mod) => mod.default);
+
 export default function App() {
   return (
-    <main className="relative w-full max-w-full overflow-x-hidden">
+    <LazyMotion features={loadMotionFeatures} strict>
+    <main className="relative w-full max-w-full overflow-x-clip">
       <ScrollProgress />
       <CustomCursor />
       <Navbar />
       <Hero />
-      <About />
-      <Skills />
-      <ClientWork />
-      <Projects />
-      <Credentials />
-      <Contact />
-      <ROICalculator />
-      <Footer />
+      <Suspense fallback={<div className="min-h-screen" aria-hidden />}>
+        <BelowFold />
+      </Suspense>
     </main>
+    </LazyMotion>
   );
 }

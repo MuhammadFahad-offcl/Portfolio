@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Maximize2 } from "lucide-react";
 import { credentials } from "@/data/portfolio";
 import { SectionLabel } from "@/components/SectionLabel";
@@ -13,7 +13,7 @@ export function Credentials() {
     <section id="certifications" className="relative py-16 md:py-20">
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 md:px-12">
         <SectionLabel>Certifications</SectionLabel>
-        <motion.h2
+        <m.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -21,14 +21,14 @@ export function Credentials() {
           className="mb-16 text-center text-4xl font-bold md:text-5xl"
         >
           Credentials &amp; <span className="text-gradient">milestones</span>
-        </motion.h2>
+        </m.h2>
 
         <div className="grid gap-5 md:grid-cols-2">
           {credentials.map((item, i) => {
             const Icon = item.icon;
             const cert = item.certificate;
             return (
-              <motion.div
+              <m.div
                 key={item.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -97,7 +97,7 @@ export function Credentials() {
                     </button>
                   )}
                 </div>
-              </motion.div>
+              </m.div>
             );
           })}
         </div>

@@ -99,14 +99,17 @@
     border-color: var(--color-border);
   }
 
-  html {
-    scroll-behavior: smooth;
+  /* Native smooth anchor scrolling only when Lenis (src/lib/smooth-scroll.ts) isn't running */
+  @media (prefers-reduced-motion: no-preference) {
+    html:not(.lenis) {
+      scroll-behavior: smooth;
+    }
   }
 
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-family: Inter, system-ui, sans-serif;
+    font-family: "Inter Variable", Inter, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
@@ -116,7 +119,7 @@
   h3,
   h4,
   h5 {
-    font-family: "Space Grotesk", Inter, sans-serif;
+    font-family: "Space Grotesk Variable", "Space Grotesk", "Inter Variable", sans-serif;
     letter-spacing: -0.02em;
   }
 }
@@ -146,11 +149,16 @@ textarea,
    CUSTOM UTILITIES used across the site
 ------------------------------------------------------------------- */
 @layer utilities {
+  /* Cards. No backdrop blur here: they sit on a flat background, where blurring costs a lot while
+     scrolling and changes nothing you can see. Use .glass-blur where something moves behind it. */
   .glass {
     background: var(--glass-bg);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    backdrop-filter: blur(20px) saturate(180%);
     border: 1px solid var(--glass-border);
+  }
+
+  .glass-blur {
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    backdrop-filter: blur(16px) saturate(180%);
   }
 
   .text-gradient {
@@ -308,6 +316,8 @@ textarea,
 ------------------------------------------------------------------- */
 :root [data-slot="elias"],
 :root .ea-hero {
+  --font-ea-display: "Inter Variable", Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-ea-sans: "Figtree Variable", Figtree, ui-sans-serif, system-ui, sans-serif;
   --color-ea-page: var(--background);
   --color-ea-ink: var(--foreground);
   --color-ea-accent: #2c47b7;
@@ -337,4 +347,101 @@ textarea,
     linear-gradient(to right, transparent, #000 10%, #000 90%, transparent),
     linear-gradient(to top, transparent, #000 14%);
   mask-composite: intersect;
+}
+
+/* ------------------------------------------------------------------
+   PARALLAX SCENE (src/components/ui/parallax-scrolling.tsx)
+   The scene is a night landscape, so it stays dark in both themes and
+   fades into the page color at the end of its content section.
+------------------------------------------------------------------- */
+.parallax {
+  --parallax-ground: #0a0b0d;
+  --parallax-text: #f5f6f8;
+  position: relative;
+  color: var(--parallax-text);
+  background: var(--parallax-ground);
+}
+
+.parallax__header {
+  position: relative;
+  z-index: 2;
+  height: 100svh;
+}
+
+.parallax__visuals {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 120%;
+}
+
+.parallax__layers {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* Each layer is a touch taller than the scene and starts above it, so moving down never shows a gap */
+.parallax__layer-img {
+  position: absolute;
+  top: -17.5%;
+  left: 0;
+  width: 100%;
+  height: 117.5%;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.parallax__layer-title {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+}
+
+.parallax__title {
+  margin: 0 0.075em 0.1em 0;
+  font-family: "Inter Variable", Inter, system-ui, sans-serif;
+  font-size: clamp(3.5rem, 14vw, 13rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-align: center;
+  color: var(--parallax-text);
+  text-shadow: 0 0.04em 0.3em rgb(0 0 0 / 0.25);
+}
+
+.parallax__fade {
+  position: absolute;
+  z-index: 30;
+  inset: auto 0 0;
+  height: 22%;
+  background: linear-gradient(to bottom, transparent, var(--parallax-ground));
+}
+
+.parallax__black-line-overflow {
+  position: absolute;
+  z-index: 20;
+  inset: auto 0 -1px;
+  height: 2px;
+  background: var(--parallax-ground);
+}
+
+.parallax__content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70svh;
+  padding: 6rem 1.5rem 9rem;
+  /* Hands over to the page color for the next section */
+  background: linear-gradient(to bottom, var(--parallax-ground) 70%, var(--background));
+}
+
+.parallax__mark {
+  width: 6rem;
 }

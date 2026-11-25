@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { ArrowUpRight, X } from "lucide-react";
 import type { projects } from "@/data/portfolio";
 
@@ -31,7 +31,7 @@ export function ProjectDialog({ project, onClose }: Props) {
   return (
     <AnimatePresence>
       {project && (
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -39,7 +39,7 @@ export function ProjectDialog({ project, onClose }: Props) {
           onClick={onClose}
           className="fixed inset-0 z-[150] flex items-end justify-center bg-black/50 p-0 backdrop-blur-sm sm:items-center sm:p-6"
         >
-          <motion.div
+          <m.div
             role="dialog"
             aria-modal="true"
             aria-labelledby="project-dialog-title"
@@ -48,6 +48,7 @@ export function ProjectDialog({ project, onClose }: Props) {
             exit={{ opacity: 0, y: 40 }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
             onClick={(e) => e.stopPropagation()}
+            data-lenis-prevent
             className="relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-t-3xl border border-border bg-background p-6 shadow-2xl sm:rounded-3xl sm:p-9"
           >
             <button
@@ -61,8 +62,8 @@ export function ProjectDialog({ project, onClose }: Props) {
             </button>
 
             <ProjectBody project={project} />
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       )}
     </AnimatePresence>
   );

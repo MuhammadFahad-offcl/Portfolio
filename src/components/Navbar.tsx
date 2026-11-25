@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { navLinks, profile } from "@/data/portfolio";
 import { useTheme } from "@/hooks/useTheme";
@@ -35,15 +35,27 @@ export function Navbar() {
         }
       }
     };
-    window.addEventListener("scroll", onScroll, { passive: true });
+    // At most one measurement per frame, however many scroll events arrive
+    let frame = 0;
+    const onScrollFrame = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        onScroll();
+      });
+    };
+    window.addEventListener("scroll", onScrollFrame, { passive: true });
     onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScrollFrame);
+      cancelAnimationFrame(frame);
+    };
   }, []);
 
   const ThemeIcon = theme === "dark" ? Sun : Moon;
 
   return (
-    <motion.header
+    <m.header
       initial={false}
       animate={pastHero ? { y: 0, opacity: 1 } : { y: -110, opacity: 0 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -55,7 +67,7 @@ export function Navbar() {
       <div className="mx-auto max-w-7xl px-6">
         <div
           className={`flex items-center justify-between rounded-full px-6 py-3 transition-all duration-500 ${
-            scrolled ? "glass shadow-soft" : "bg-transparent"
+            scrolled ? "glass glass-blur shadow-soft" : "bg-transparent"
           }`}
         >
           <a href="#home" className="font-bold tracking-tight text-primary">
@@ -70,7 +82,7 @@ export function Navbar() {
                 className="relative whitespace-nowrap rounded-full px-4 py-2 text-sm text-foreground/70 transition-colors hover:text-primary"
               >
                 {active === link.href.slice(1) && (
-                  <motion.span
+                  <m.span
                     layoutId="nav-pill"
                     className="absolute inset-0 rounded-full bg-primary/8"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
@@ -111,11 +123,11 @@ export function Navbar() {
 
       <AnimatePresence>
         {menuOpen && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="glass mx-6 mt-2 rounded-2xl p-4 lg:hidden"
+            className="glass glass-blur mx-6 mt-2 rounded-2xl p-4 lg:hidden"
           >
             <div className="flex flex-col">
               {navLinks.map((link) => (
@@ -129,9 +141,9 @@ export function Navbar() {
                 </a>
               ))}
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </m.header>
   );
 }

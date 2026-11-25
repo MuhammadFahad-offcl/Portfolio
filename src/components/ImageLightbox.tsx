@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { X } from "lucide-react";
 
 type Props = {
@@ -29,7 +29,7 @@ export function ImageLightbox({ open, onClose, src, alt }: Props) {
   return (
     <AnimatePresence>
       {open && (
-        <motion.div
+        <m.div
           role="dialog"
           aria-modal="true"
           aria-label={alt}
@@ -49,7 +49,7 @@ export function ImageLightbox({ open, onClose, src, alt }: Props) {
           >
             <X size={20} />
           </button>
-          <motion.img
+          <m.img
             src={src}
             alt={alt}
             initial={{ scale: 0.95, opacity: 0 }}
@@ -59,7 +59,7 @@ export function ImageLightbox({ open, onClose, src, alt }: Props) {
             onClick={(e) => e.stopPropagation()}
             className="max-h-full max-w-full rounded-xl shadow-2xl"
           />
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   );

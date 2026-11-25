@@ -1,4 +1,4 @@
-import { motion, type Variants } from "framer-motion";
+import { m, type Variants } from "framer-motion";
 import { ArrowUpRight, CodeXml, Mail } from "lucide-react";
 import { footer, profile } from "@/data/portfolio";
 import { GithubIcon, LinkedinIcon } from "@/components/BrandIcons";
@@ -29,14 +29,14 @@ export function Footer() {
     <footer className="relative overflow-hidden border-t border-primary/10 bg-background">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
       <div className="relative mx-auto max-w-7xl px-6 py-16 md:py-24">
-        <motion.div
+        <m.div
           variants={container}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           className="relative z-10 grid gap-12 md:grid-cols-2 lg:grid-cols-12"
         >
-          <motion.div variants={item} className="lg:col-span-5">
+          <m.div variants={item} className="lg:col-span-5">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground">
                 <CodeXml size={20} />
@@ -46,7 +46,7 @@ export function Footer() {
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">{footer.description}</p>
             <div className="mt-8 flex items-center gap-3">
               {socials.map((s) => (
-                <motion.a
+                <m.a
                   key={s.label}
                   href={s.href}
                   target="_blank"
@@ -57,12 +57,12 @@ export function Footer() {
                   className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-colors hover:border-primary/30 hover:text-primary"
                 >
                   {s.icon}
-                </motion.a>
+                </m.a>
               ))}
             </div>
-          </motion.div>
+          </m.div>
 
-          <motion.div variants={item} className="lg:col-span-3 lg:col-start-7">
+          <m.div variants={item} className="lg:col-span-3 lg:col-start-7">
             <h4 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Navigation</h4>
             <ul className="mt-6 space-y-3">
               {footer.navLinks.map((link) => (
@@ -80,9 +80,9 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </m.div>
 
-          <motion.div variants={item} className="lg:col-span-3">
+          <m.div variants={item} className="lg:col-span-3">
             <h4 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Get in Touch</h4>
             <p className="mt-6 text-sm leading-relaxed text-muted-foreground">{footer.getInTouch}</p>
             <a
@@ -92,10 +92,10 @@ export function Footer() {
               <Mail size={14} />
               Say Hello
             </a>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           variants={item}
           initial="hidden"
           whileInView="visible"
@@ -122,10 +122,10 @@ export function Footer() {
               <ArrowUpRight size={12} className="transition-transform group-hover:-translate-y-0.5" />
             </span>
           </a>
-        </motion.div>
+        </m.div>
       </div>
 
-      <motion.div
+      <m.div
         variants={bigWord}
         initial="hidden"
         whileInView="visible"
@@ -134,11 +134,11 @@ export function Footer() {
       >
         <span
           className="select-none whitespace-nowrap text-[18vw] font-bold leading-none tracking-tighter text-foreground/[0.03]"
-          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          style={{ fontFamily: "'Space Grotesk Variable', sans-serif" }}
         >
           {profile.brand.toUpperCase()}
         </span>
-      </motion.div>
+      </m.div>
       <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
     </footer>
   );

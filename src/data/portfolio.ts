@@ -165,6 +165,25 @@ export const hero = {
   ],
 };
 
+/* ---------- Parallax scene (right under the hero) ----------
+   Layers are painted back to front; yPercent is how far each one drifts
+   while the scene scrolls away (bigger = slower, feels further away).
+   The title sits between the last two layers. Images: /public/media/parallax */
+const parallaxLayer = (n: number, yPercent: number) => ({
+  src: `/media/parallax/layer-${n}-2000.webp`,
+  srcSet: `/media/parallax/layer-${n}-1000.webp 1000w, /media/parallax/layer-${n}-2000.webp 2000w`,
+  yPercent,
+});
+
+export const parallax = {
+  title: "Automate.",
+  layers: [parallaxLayer(1, 70), parallaxLayer(2, 55), parallaxLayer(4, 10)],
+  eyebrow: "What I do",
+  statement:
+    "I turn hours of repetitive work into systems that run on their own: answering customers, booking meetings and moving data while you sleep.",
+  link: { label: "See it working", href: "#client-work" },
+};
+
 /* ---------- About ---------- */
 export const about = {
   photoCaption: { label: "Founder", value: profile.company },

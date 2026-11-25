@@ -1,5 +1,5 @@
 import { useState, type FormEvent, type ReactNode } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Building2, Check, FileText, Mail, MapPin, MessageCircle, Send } from "lucide-react";
 import { z } from "zod";
 import { profile } from "@/data/portfolio";
@@ -121,7 +121,7 @@ export function Contact() {
       <div className="absolute inset-0 bg-gradient-radial opacity-60" />
       <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6 md:px-12">
         <SectionLabel>Contact</SectionLabel>
-        <motion.h2
+        <m.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -129,8 +129,8 @@ export function Contact() {
           className="text-center text-4xl font-bold md:text-6xl"
         >
           Let's build something <span className="text-gradient">intelligent</span>
-        </motion.h2>
-        <motion.p
+        </m.h2>
+        <m.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -138,10 +138,10 @@ export function Contact() {
           className="mx-auto mt-4 max-w-xl text-center text-muted-foreground"
         >
           Have a workflow to automate or an AI product to ship? Drop a message.
-        </motion.p>
+        </m.p>
 
         <div className="mt-16 grid gap-6 lg:grid-cols-5">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -187,9 +187,9 @@ export function Contact() {
                 </a>
               </div>
             </div>
-          </motion.div>
+          </m.div>
 
-          <motion.form
+          <m.form
             onSubmit={onSubmit}
             noValidate
             initial={{ opacity: 0, x: 20 }}
@@ -267,7 +267,7 @@ export function Contact() {
               {errors.message && <p className="mt-1.5 text-xs text-destructive">{errors.message}</p>}
             </div>
 
-            <motion.button
+            <m.button
               type="submit"
               disabled={sending || sent}
               whileTap={{ scale: 0.97 }}
@@ -285,13 +285,13 @@ export function Contact() {
                   <Send size={14} className="transition-transform group-hover:translate-x-1" />
                 </>
               )}
-            </motion.button>
+            </m.button>
             {sendError && (
               <p role="alert" className="mt-3 text-center text-xs text-destructive">
                 {sendError}
               </p>
             )}
-          </motion.form>
+          </m.form>
         </div>
       </div>
     </section>

@@ -35,7 +35,9 @@ clients can reach me directly.
 
 - **Light & dark themes** — follows the visitor's system setting and remembers their choice.
 - **Editorial hero header** — an ink-splash intro, a giant name with a cut-out portrait, an ink-spotlight cursor, projects shown as 3D hardcover books and a letter that types itself (`src/components/ui/elias-author-hero.tsx`).
-- **Polished motion** — staggered scroll reveals, custom cursor and a scroll progress bar, built with Framer Motion.
+- **Smooth scrolling & parallax** — Lenis smooth scroll site-wide (off on touch devices and for reduced motion) and a layered GSAP parallax scene under the hero (`src/components/ui/parallax-scrolling.tsx`).
+- **Polished motion** — staggered scroll reveals, custom cursor and a scroll progress bar, built with Framer Motion (lazy-loaded features).
+- **Fast by default** — self-hosted fonts, the hero in the first bundle and everything below it in a parallel chunk, long-lived caching for built assets (`vercel.json`).
 - **Fully responsive** — designed for phones, tablets and large screens, with a dedicated mobile menu.
 - **Working contact form** — schema-validated with Zod, delivered straight to my inbox, with a honeypot to filter spam bots.
 - **Real client work** — a live WhatsApp appointment agent running in production, shown with a video demo that plays only while on screen.
@@ -93,12 +95,14 @@ clients can reach me directly.
 └── src/
     ├── data/portfolio.ts       all site content (single source of truth)
     ├── index.css               theme tokens, light/dark palettes, custom utilities
-    ├── App.tsx                 page composition and section order
+    ├── App.tsx                 page shell: navbar, hero, lazy-loaded sections
+    ├── lib/smooth-scroll.ts    Lenis smooth scrolling
     ├── hooks/useTheme.ts       theme switching and persistence
     └── components/
         ├── Navbar, Footer, Loader, ScrollProgress, CustomCursor
         ├── BlurFade, SectionLabel, BrandIcons, ImageLightbox, ProjectDialog
-        ├── ui/                 elias-author-hero (the hero header component)
+        ├── ui/                 elias-author-hero, parallax-scrolling
+        ├── BelowFold.tsx       order of the sections under the hero
         └── sections/           Hero, About, Skills, ClientWork, Projects, Credentials, Contact
 ```
 

@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Calculator, ArrowRight, TrendingUp, Clock, Banknote } from "lucide-react";
 import { profile } from "@/data/portfolio";
 import { SectionLabel } from "@/components/SectionLabel";
@@ -30,9 +30,9 @@ export function ROICalculator() {
   const yearlySavings = hours * rate * 52;
 
   const switchMarket = useCallback(
-    (m: Market) => {
-      setMarket(m);
-      setRate(MARKETS[m].defaultRate);
+    (next: Market) => {
+      setMarket(next);
+      setRate(MARKETS[next].defaultRate);
     },
     [],
   );
@@ -42,7 +42,7 @@ export function ROICalculator() {
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-12">
         <SectionLabel>ROI Calculator</SectionLabel>
 
-        <motion.h2
+        <m.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -50,8 +50,8 @@ export function ROICalculator() {
           className="text-center text-4xl font-bold md:text-5xl"
         >
           Calculate Your <span className="text-gradient">Savings</span>
-        </motion.h2>
-        <motion.p
+        </m.h2>
+        <m.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -60,9 +60,9 @@ export function ROICalculator() {
         >
           See how much your business can save by automating repetitive tasks
           with AI-powered workflows.
-        </motion.p>
+        </m.p>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -74,22 +74,22 @@ export function ROICalculator() {
             {/* ── Market Toggle ── */}
             <div className="flex items-center justify-center border-b border-border/60 bg-secondary/40 px-6 py-4">
               <div className="relative flex rounded-full bg-secondary p-1">
-                {(["PKR", "AED"] as Market[]).map((m) => (
+                {(["PKR", "AED"] as Market[]).map((option) => (
                   <button
-                    key={m}
+                    key={option}
                     type="button"
-                    onClick={() => switchMarket(m)}
+                    onClick={() => switchMarket(option)}
                     className={`relative z-10 rounded-full px-5 py-2 text-sm font-semibold transition-colors duration-200 ${
-                      market === m
+                      market === option
                         ? "text-primary-foreground"
                         : "text-muted-foreground hover:text-foreground"
                     }`}
                   >
-                    {MARKETS[m].label}
+                    {MARKETS[option].label}
                   </button>
                 ))}
                 {/* Sliding pill indicator */}
-                <motion.div
+                <m.div
                   layout
                   transition={{ type: "spring", stiffness: 400, damping: 30 }}
                   className="absolute inset-y-1 rounded-full bg-primary shadow-md"
@@ -195,7 +195,7 @@ export function ROICalculator() {
                       <p className="mb-1.5 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                         Monthly Savings
                       </p>
-                      <motion.p
+                      <m.p
                         key={`m-${monthlySavings}`}
                         initial={{ opacity: 0, y: 6 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -203,7 +203,7 @@ export function ROICalculator() {
                         className="text-3xl font-bold tracking-tight text-primary md:text-4xl"
                       >
                         {fmt(monthlySavings, cfg.prefix)}
-                      </motion.p>
+                      </m.p>
                     </div>
 
                     {/* Yearly */}
@@ -211,7 +211,7 @@ export function ROICalculator() {
                       <p className="mb-1.5 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                         Yearly Savings
                       </p>
-                      <motion.p
+                      <m.p
                         key={`y-${yearlySavings}`}
                         initial={{ opacity: 0, y: 6 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -219,7 +219,7 @@ export function ROICalculator() {
                         className="text-3xl font-bold tracking-tight text-primary md:text-4xl"
                       >
                         {fmt(yearlySavings, cfg.prefix)}
-                      </motion.p>
+                      </m.p>
                     </div>
                   </div>
                 </div>
@@ -241,7 +241,7 @@ export function ROICalculator() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

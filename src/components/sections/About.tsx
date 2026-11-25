@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { User } from "lucide-react";
 import { about, profile } from "@/data/portfolio";
 import { SectionLabel } from "@/components/SectionLabel";
@@ -12,7 +12,7 @@ export function About() {
     <section id="about" className="relative py-16 md:py-20">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-12">
         <SectionLabel>About Me</SectionLabel>
-        <motion.h2
+        <m.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -20,11 +20,11 @@ export function About() {
           className="mx-auto mb-16 max-w-3xl text-center text-4xl font-bold leading-tight md:text-5xl"
         >
           Engineering the future, <span className="text-gradient">one workflow at a time</span>
-        </motion.h2>
+        </m.h2>
 
         <div className="grid items-start gap-10 lg:grid-cols-2">
           {/* Photo card */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -45,7 +45,7 @@ export function About() {
                   className="animate-photo-float h-full w-full max-w-full select-none object-contain object-bottom"
                 />
               </div>
-              <div className="absolute bottom-6 left-6 right-6 glass rounded-2xl p-4">
+              <div className="absolute bottom-6 left-6 right-6 glass glass-blur rounded-2xl p-4">
                 <div className="flex items-center gap-3">
                   <div className="flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
                     <User size={18} />
@@ -57,10 +57,10 @@ export function About() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </m.div>
 
           {/* Text + facts */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -85,7 +85,7 @@ export function About() {
               {about.facts.map((fact, i) => {
                 const Icon = fact.icon;
                 return (
-                  <motion.div
+                  <m.div
                     key={fact.label}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -102,11 +102,11 @@ export function About() {
                       </div>
                       <div className="truncate text-sm font-semibold">{fact.value}</div>
                     </div>
-                  </motion.div>
+                  </m.div>
                 );
               })}
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { ArrowRight, Building2, CheckCircle2, Pause, Play } from "lucide-react";
 import { clientWork } from "@/data/portfolio";
 import { SectionLabel } from "@/components/SectionLabel";
@@ -80,7 +80,7 @@ export function ClientWork() {
     <section id="client-work" className="relative py-16 md:py-20">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-12">
         <SectionLabel>Client Work</SectionLabel>
-        <motion.h2
+        <m.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -88,8 +88,8 @@ export function ClientWork() {
           className="text-center text-4xl font-bold md:text-5xl"
         >
           Built for real clients, <span className="text-gradient">running in production</span>
-        </motion.h2>
-        <motion.p
+        </m.h2>
+        <m.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -97,11 +97,11 @@ export function ClientWork() {
           className="mx-auto mt-4 max-w-xl text-center text-muted-foreground"
         >
           Systems I've delivered for businesses and still run and maintain today.
-        </motion.p>
+        </m.p>
 
         <div className="mt-16 space-y-8">
           {clientWork.map((work) => (
-            <motion.article
+            <m.article
               key={work.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -161,7 +161,7 @@ export function ClientWork() {
                   <div className="mt-7 grid grid-cols-3 gap-3">
                     {work.stats.map((stat) => (
                       <div key={stat.label} className="rounded-2xl border border-border bg-background/50 p-4 text-center">
-                        <div className="text-gradient text-2xl font-bold md:text-3xl" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                        <div className="text-gradient text-2xl font-bold md:text-3xl" style={{ fontFamily: "'Space Grotesk Variable', sans-serif" }}>
                           {stat.value}
                         </div>
                         <div className="mt-1 text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
@@ -197,7 +197,7 @@ export function ClientWork() {
                   </a>
                 </div>
               </div>
-            </motion.article>
+            </m.article>
           ))}
         </div>
       </div>
