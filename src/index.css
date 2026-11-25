@@ -300,3 +300,41 @@ textarea,
   border-radius: 999px;
   background: var(--border);
 }
+
+/* ------------------------------------------------------------------
+   HERO HEADER — colors of the editorial header at the top
+   (src/components/ui/elias-author-hero.tsx). Light theme first, then
+   dark. Delete this block to get the component's original cream/orange.
+------------------------------------------------------------------- */
+:root [data-slot="elias"],
+:root .ea-hero {
+  --color-ea-page: var(--background);
+  --color-ea-ink: var(--foreground);
+  --color-ea-accent: #2c47b7;
+  --color-ea-muted: var(--muted-foreground);
+  --color-ea-paper: var(--secondary);
+  --color-ea-sheet: #fbfcff;
+  --color-ea-splash: #090f27;
+  --color-ea-splash-type: #ffffff;
+}
+
+.dark [data-slot="elias"],
+.dark .ea-hero {
+  --color-ea-accent: #00cdfc;
+  --color-ea-paper: var(--card);
+  --color-ea-sheet: var(--card);
+  --color-ea-splash: #04070d;
+  --color-ea-splash-type: #f7f9fa;
+}
+
+/* Softens the photo's straight left/right crop and its bottom edge */
+.ea-portrait {
+  -webkit-mask-image:
+    linear-gradient(to right, transparent, #000 10%, #000 90%, transparent),
+    linear-gradient(to top, transparent, #000 14%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent, #000 10%, #000 90%, transparent),
+    linear-gradient(to top, transparent, #000 14%);
+  mask-composite: intersect;
+}

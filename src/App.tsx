@@ -1,4 +1,3 @@
-import { Loader } from "@/components/Loader";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { CustomCursor } from "@/components/CustomCursor";
 import { Navbar } from "@/components/Navbar";
@@ -16,7 +15,6 @@ import { ROICalculator } from "@/components/sections/ROICalculator";
 export default function App() {
   return (
     <main className="relative w-full max-w-full overflow-x-hidden">
-      <Loader />
       <ScrollProgress />
       <CustomCursor />
       <Navbar />

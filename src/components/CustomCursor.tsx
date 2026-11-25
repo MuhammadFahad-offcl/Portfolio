@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 export function CustomCursor() {
   const [pos, setPos] = useState({ x: -100, y: -100 });
   const [hovering, setHovering] = useState(false);
+  const [overHero, setOverHero] = useState(false);
   const [isPointerFine, setIsPointerFine] = useState(false);
 
   useEffect(() => {
@@ -21,6 +22,8 @@ export function CustomCursor() {
     const onOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement | null;
       setHovering(!!target?.closest?.("a,button,[data-cursor-hover]"));
+      // The hero header has its own ink cursor
+      setOverHero(!!target?.closest?.(".ea-has-cursor"));
     };
 
     window.addEventListener("mousemove", onMove, { passive: true });
@@ -39,7 +42,7 @@ export function CustomCursor() {
   return (
     <motion.div
       className="pointer-events-none fixed left-0 top-0 z-[100] hidden [@media(pointer:fine)]:block"
-      animate={{ x: pos.x - 16, y: pos.y - 16, scale: hovering ? 2.2 : 1 }}
+      animate={{ x: pos.x - 16, y: pos.y - 16, scale: hovering ? 2.2 : 1, opacity: overHero ? 0 : 1 }}
       transition={{ type: "spring", stiffness: 500, damping: 30, mass: 0.3 }}
     >
       <div className="size-8 rounded-full bg-primary/20 backdrop-blur-sm mix-blend-multiply" />
